@@ -1,23 +1,23 @@
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-module.export = {
+module.exports = {
     entry: './src/index.jsx',
     output: {
-        path: __dirname + 'public',
+        path: __dirname + '/public',
         filename: './app.js'
     },
     devServer: {
         port: 8080,
-        contentBase: './public'
+        contentBase: './public',
     },
     resolve: {
         extensions: ['', '.js', '.jsx'],
         alias: {
-            modules: __dirname + 'node_modules'
+            modules: __dirname + '/node_modules'
         }
     },
-    plugis: [
+    plugins: [ 
         new ExtractTextPlugin('app.css')
     ],
     module: {
@@ -26,7 +26,7 @@ module.export = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
-                presents: ['es2015', 'react'],
+                presets: ['es2015', 'react'],
                 plugins: ['transform-object-rest-spread']
             }
         }, {
@@ -35,7 +35,6 @@ module.export = {
         }, {
             test: /\.woff|.woff2|.ttf|.eot|.svg*.*$/,
             loader: 'file'
-        }
-        ]
+        }]
     }
 }
